@@ -1,0 +1,17 @@
+{
+  "name": "concurrent-hash-array",
+  "version": "0.1.0",
+  "description": "Stores key-value pairs in a resizable array with compare-and-swap operations for lock-free concurrent access.",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": "./src/index.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "dependencies": {}
+}
