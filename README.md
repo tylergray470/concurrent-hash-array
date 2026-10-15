@@ -41,3 +41,10 @@ The capacity is fixed at construction. Inserting a new key into a full table ret
 Readers may briefly observe a slot mid-replace (when a value for an existing key is being swapped) and treat it as absent for that probe. A retry of `get` will see the new value. This is the cost of avoiding a global lock on the replace path; it never returns stale data, only occasionally transiently-absent-then-present data during a concurrent value swap.
 
 Keys are strings only. Mixing key types would require a discriminator and a more complex equality function; the brief asked for a small, focused library, so strings it is.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
